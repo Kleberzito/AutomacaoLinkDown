@@ -7,9 +7,14 @@ namespace AutomacaoLinkDown
         static void Main(string[] args)
         {
             ExcelData excelData = new ExcelData();
+            PingHelper helper = new PingHelper();
 
-            excelData.ShowData();
-            
+            excelData.ExcelDataReturn();
+
+            foreach (var item in excelData.conveniado)
+            {
+                helper.PingIP(item.IP);
+            }            
         }
     }
 }

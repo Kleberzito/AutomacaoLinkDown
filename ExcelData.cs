@@ -11,9 +11,9 @@ namespace AutomacaoLinkDown
 {
     public class ExcelData
     {
-        List<Alert> conveniado = new List<Alert>();
+        public List<Alert> conveniado = new List<Alert>();
 
-        private void ExcelDataReturn() 
+        public void ExcelDataReturn() 
         {
             string filePath = @"C:\Users\klebe\Downloads\wm_task (2).xlsx";
 
