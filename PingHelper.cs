@@ -1,84 +1,72 @@
-﻿using System.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Net.NetworkInformation;
 
 namespace AutomacaoLinkDown
 {
     public class PingHelper
     {
-        public void PingIP(string ipAddress)
+        public void PingIP(string ip)
         {
-            string[] ip = ipAddress.Split('.');
-            int nIPSplit = int.Parse(ip[3]);
-            nIPSplit = nIPSplit - 1;
-            string newIP = $"{ip[0]}.{ip[1]}.{ip[2]}.{nIPSplit}";
+            IpAddress ipAddress = new IpAddress(ip, 4);
 
             using (Ping ping = new Ping())
             {
-                int enviados = 0;
-                float resposta = 0;
-                int nBytes = 0;
-                int ttl = 0;
-                int recebidos = 0;
-                int perdidos = 0;                
-
                 try
                 {
-                    for (int i = 0; i < 4; i++)
+                    List<string> teste = new List<string>();
+                    for (int i = 0; i < ipAddress.nTeste; i++)
                     {
-                        PingReply reply = ping.Send(ipAddress);
-                        enviados++;
-                        resposta += reply.RoundtripTime;
-                        nBytes += reply.Buffer.Length;                        
+                        PingReply reply = ping.Send(ipAddress.IpServe);
 
                         if (reply.Status == IPStatus.Success)
                         {
-                            recebidos++;
-                            ttl += reply.Options.Ttl;
+                            ipAddress.Recebidos++;
+                            ipAddress.TtlData += reply.Options.Ttl;
                         }
                         else
                         {
-                            perdidos++;
+                            ipAddress.Perdidos++;
                         }
+
+                        ipAddress.Enviados++;
+                        ipAddress.Resposta += reply.RoundtripTime;
+                        ipAddress.QntBytes += reply.Buffer.Length;
+                        ipAddress.ipStatus = reply.Status.ToString();
                     }
 
-                    resposta = resposta / 4;
-                    nBytes = nBytes / 4;
-                    ttl = ttl / 4;
+                    ipAddress.calValue();
+                    teste.Add("***Serve***\n" + ipAddress.stringValue(ipAddress.IpServe));
+                    Console.WriteLine(teste[0]);
 
-                    Console.WriteLine($"NUC responde OK:\n");
-                    Console.WriteLine($"Ping para {ipAddress} bem-sucedido:");
-                    Console.WriteLine($"Tempo de resposta: {resposta} ms");
-                    Console.WriteLine($"Tamanho do buffer: {nBytes} bytes");
-                    Console.WriteLine($"TTL (Time to Live): {ttl}");
-                    Console.WriteLine();
-                    /*
-                    else
+                    for (int i = 0; i < ipAddress.nTeste; i++)
                     {
-                        reply = ping.Send(newIP);
+                        PingReply reply = ping.Send(ipAddress.IpLink);
+
                         if (reply.Status == IPStatus.Success)
                         {
-                            Console.WriteLine($"NUC não responde NOK: {ipAddress}: {reply.Status}, Link responde OK {newIP}: {reply.Status}\n");
-                            Console.WriteLine($"Ping para {newIP} bem-sucedido:");
-                            Console.WriteLine($"Tempo de resposta: {reply.RoundtripTime} ms");
-                            Console.WriteLine($"Tamanho do buffer: {reply.Buffer.Length} bytes");
-                            Console.WriteLine($"TTL (Time to Live): {reply.Options.Ttl}");
-                            Console.WriteLine($"Fragmentação permitida: {reply.Options.DontFragment}");
-                            Console.WriteLine();
+                            ipAddress.Recebidos++;
+                            ipAddress.TtlData += reply.Options.Ttl;
                         }
                         else
                         {
-                            Console.WriteLine($"Link não responde NOK: {newIP}: {reply.Status}");
-                            Console.WriteLine($"Tempo de resposta: {reply.RoundtripTime} ms");
-                            Console.WriteLine($"Tamanho do buffer: {reply.Buffer.Length} bytes");
-                            Console.WriteLine();
-                        };
+                            ipAddress.Perdidos++;
+                        }
 
+                        ipAddress.Enviados++;
+                        ipAddress.Resposta += reply.RoundtripTime;
+                        ipAddress.QntBytes += reply.Buffer.Length;
+                        ipAddress.ipStatus = reply.Status.ToString();
+                    }
 
-                    }*/
+                    ipAddress.calValue();
+                    teste.Add("***Link***\n" + ipAddress.stringValue(ipAddress.IpLink));
+                    Console.WriteLine(teste[1]);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao tentar pingar {ipAddress}: {ex.Message}");
+                    Console.WriteLine($"Erro ao tentar pingar {ipAddress.IpServe}: {ex.Message}");
                 }
             }
         }
