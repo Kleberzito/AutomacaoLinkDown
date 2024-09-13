@@ -7,6 +7,7 @@ namespace AutomacaoLinkDown
 {
     public class PingHelper
     {
+        public List<string> listIP = new List<string>();
         public void PingIP(string ip)
         {
             IpAddress ipAddress = new IpAddress(ip, 4);
@@ -15,7 +16,6 @@ namespace AutomacaoLinkDown
             {
                 try
                 {
-                    List<string> teste = new List<string>();
                     for (int i = 0; i < ipAddress.nTeste; i++)
                     {
                         PingReply reply = ping.Send(ipAddress.IpServe);
@@ -37,8 +37,7 @@ namespace AutomacaoLinkDown
                     }
 
                     ipAddress.calValue();
-                    teste.Add("***Serve***\n" + ipAddress.stringValue(ipAddress.IpServe));
-                    Console.WriteLine(teste[0]);
+                    listIP.Add("***Serve***\n" + ipAddress.stringValue(ipAddress.IpServe));                    
 
                     for (int i = 0; i < ipAddress.nTeste; i++)
                     {
@@ -61,8 +60,7 @@ namespace AutomacaoLinkDown
                     }
 
                     ipAddress.calValue();
-                    teste.Add("***Link***\n" + ipAddress.stringValue(ipAddress.IpLink));
-                    Console.WriteLine(teste[1]);
+                    listIP.Add("***Link***\n" + ipAddress.stringValue(ipAddress.IpLink));
                 }
                 catch (Exception ex)
                 {

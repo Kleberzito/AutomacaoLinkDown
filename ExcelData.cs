@@ -13,9 +13,9 @@ namespace AutomacaoLinkDown
     {
         public List<Alert> conveniado = new List<Alert>();
 
-        public void ExcelDataReturn() 
+        public void ExcelDataReturn(string path, string file) 
         {
-            string filePath = @"C:\Users\klebe\Downloads\wm_task (2).xlsx";
+            string filePath = $"{path}{file}";
 
             if (File.Exists(filePath))
             {
@@ -58,16 +58,6 @@ namespace AutomacaoLinkDown
             else
             {
                 Console.WriteLine("Arquivo não encontrado!");
-            }
-        }
-
-        public void ShowData()
-        {
-            ExcelDataReturn();
-
-            foreach (var iten in conveniado)
-            {
-                Console.WriteLine(iten);
             }
         }
     }
