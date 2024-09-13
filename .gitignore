@@ -1,0 +1,149 @@
+# Arquivos específicos do usuário
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Arquivos específicos do usuário (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Resultados de build
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Diretório de cache/opções do Visual Studio 2015
+.vs/
+
+# Resultados de testes MSTest
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Resultados de testes NUNIT
+*.VisualState.xml
+TestResult.xml
+
+# Resultados de build de um projeto ATL
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# Arquivos de projeto .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
+
+# Arquivos do VS Code
+.vscode/
+
+# Arquivos de cache do Visual Studio
+*.cache
+*.pdb
+*.obj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Arquivos de cobertura de código
+*.coverage
+*.coveragexml
+
+# Diretórios de pacotes NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+# Arquivos de configuração do NuGet v3
+*.nuget.props
+*.nuget.targets
+
+# Diretórios de pacotes de aplicativos da Windows Store
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+
+# Diretórios de publicação do Click-Once
+publish/
+
+# Diretórios de saída do Microsoft Azure
+csx/
+*.build.csdef
+
+# Diretórios de cache do Visual C++
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.VC.opendb
+
+# Arquivos de cache do Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Diretórios de trabalho local do TFS 2012
+$tf/
+
+# Arquivos de configuração do ReSharper
+_ReSharper*/
+*.ReSharper
+*.DotSettings.user
+
+# Arquivos de configuração do JustCode
+.JustCode
+
+# Arquivos de configuração do TeamCity
+_TeamCity*
+
+# Arquivos de configuração do DotCover
+*.dotCover
+
+# Arquivos de configuração do NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# Arquivos de configuração do MightyMoose
+*.mm.*
+AutoTest.Net/
+
+# Diretórios de cache do Web workbench (sass)
+.sass-cache/
+
+# Diretórios de saída do Installshield
+[Ee]xpress/
+
+# Diretórios de saída do DocProject
+DocProject/buildhelp/
+DocProject/Help/*.HxT
+DocProject/Help/*.HxC
+DocProject/Help/*.hhc
+DocProject/Help/*.hhk
+DocProject/Help/*.hhp
+DocProject/Help/Html2
+DocProject/Help/html
+
+# Diretórios de publicação do Microsoft Azure Web App
+PublishScripts/
+
+# Arquivos de configuração do NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
